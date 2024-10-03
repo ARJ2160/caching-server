@@ -22,4 +22,9 @@ caching-proxy --port <number> --origin <url>
 caching-proxy --port 3000 --origin http://dummyjson.com
 ```
 
-4. Hitting this URL "http://dummyjson.com/products" in postman will cache the response on the first time and then return the cached response on the second time, hence reducing response time significantly.
+4. Hitting this URL "http://dummyjson.com/products" or "http://dummyjson.com/users" in postman will cache the response on the first time and then return the cached response on the second time, hence reducing response time significantly.
+
+5. Clear Cache
+```sh
+caching-proxy clear-cache
+```
