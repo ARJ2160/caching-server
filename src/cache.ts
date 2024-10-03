@@ -1,18 +1,22 @@
-const cache: any = {};
+import NodeCache from "node-cache";
+const cache = new NodeCache({ stdTTL: 100 });
 
-export const set = (key: string, value: any) => {
-  return (cache[key] = value);
-};
+class NodeCaching {
+  set(url: string, data: any) {
+    cache.set(url, data);
+  }
+  get(key: string) {
+    return cache.get(key);
+  }
+  getAll() {
+    return cache.keys();
+  }
+  clearCache() {
+    return cache.close();
+  }
+  has(key: any) {
+    return cache.has(key);
+  }
+}
 
-export const get = (key: any) => {
-  return cache[key];
-};
-
-export const clear = () => {
-  return Object.keys(cache).forEach((key) => delete cache[key]);
-};
-export const has = (key: any) => {
-  return cache.hasOwnProperty(key);
-};
-
-export default cache;
+export default NodeCaching;

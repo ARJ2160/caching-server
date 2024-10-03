@@ -3,11 +3,12 @@ import { Command } from "commander";
 import { proxyServerStart } from "./proxyServer";
 
 import figlet from "figlet";
-import { clear as clearCache } from "./cache";
+import NodeCaching from "./cache";
 
 console.log(figlet.textSync("Caching Server"));
 
 const program = new Command();
+const nodeCacheClient = new NodeCaching();
 program.version("1.0.0").description("Caching Proxy CLI Tool");
 
 // Start command to run the caching server
@@ -23,7 +24,7 @@ program
       process.exit(1);
     }
 
-    proxyServerStart(port, origin);
+    proxyServerStart(port, origin, nodeCacheClient);
   });
 
 // Clear-cache command to clear cache
@@ -31,7 +32,7 @@ program
   .command("clear-cache")
   .description("Clear the cache")
   .action(() => {
-    clearCache();
+    nodeCacheClient.clearCache();
     console.log("Cache cleared.");
   });
 
