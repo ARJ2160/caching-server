@@ -14,7 +14,7 @@ class NodeCaching {
   clearCache() {
     return cache.close();
   }
-  has(key: any) {
+  has(key: string) {
     return cache.has(key);
   }
 }

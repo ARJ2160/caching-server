@@ -25,7 +25,6 @@ export const proxyServerStart = (
         cachingClient.set(url, data); // Cache the response
         res.set("X-Cache", "MISS");
         res.send(data);
-        console.log(">>", cachingClient.getAll());
       } catch (error: any) {
         res.status(500).send(`Error fetching from origin: ${error.message}`);
       }
