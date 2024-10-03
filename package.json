@@ -8,7 +8,7 @@
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
   },
   "bin": {
-    "caching-proxy": "./index.js"
+    "caching-proxy": "./dist/index.js"
   },
   "keywords": [],
   "author": "",
